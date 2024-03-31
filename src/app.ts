@@ -10,6 +10,9 @@ export function startApp(): { verificationUrlPromise: Promise<string>, claimsPro
     let resolveClaims: (value: Claims) => void;
     let rejectClaims: (reason?: Error) => void;
 
+    // TODO when https://github.com/tc39/proposal-promise-with-resolvers lands
+    //      in node.js without the --js-promise-withresolvers feature flag,
+    //      replace this with Promise.withResolvers.
     const verificationUrlPromise = new Promise((resolve: (value: string) => void, reject) => {
         resolveVerificationUrl = resolve;
         rejectVerificationUrl = reject;
